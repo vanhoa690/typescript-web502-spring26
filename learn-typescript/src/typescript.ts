@@ -66,7 +66,7 @@ data.description; // null
 // 9. Unknown và Any
 
 let input: unknown = "hello";
-input.toLowerCase(); // error
+// input.toLowerCase(); // error
 // hay gap try catch axios => catch (error: unknown) { as AxiosError} : message
 
 // 10. Type Assertions
