@@ -24,3 +24,23 @@ function greetUser(name: string, greeting: string | number = "hello"): string {
 
 greetUser("Alice"); // "hello, Alice!"
 greetUser("Alice", "Xin Chao"); // "Xin Chao, Alice!"
+
+// 4. Tham số tùy chọn (Optional Parameter)
+function describePerson(name: string, age?: number): string {
+  if (age) {
+    return `${name} is ${age} years old.`;
+  }
+  return `${name} has no age specified.`;
+}
+
+// 5. Toán tử spread (Spread Operators)
+function sum(...numbers: number[]): number {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+sum(1, 2);
+sum(1, 2, 3, 4, 5);
+
+// 6. Rest Parameter
+function multiply(factor: number, ...numbers: number[]): number[] {
+  return numbers.map((num) => num * factor);
+}

@@ -71,9 +71,9 @@ console.log(describePerson("John")); // Kết quả: John has no age specified.
 console.log(describePerson("Jane", 25)); // Kết quả: Jane is 25 years old.
 ```
 
-### 1.4.3 Toán tử spread (Spread Operators)
+### 1.4.3 Toán tử Rest (Rest Parameter)
 
-Toán tử spread (`...`) cho phép truyền một mảng các giá trị vào hàm như các tham số riêng lẻ.
+Toán tử reset (`...`) cho phép truyền một mảng các giá trị vào hàm như các tham số riêng lẻ.
 
 ```typescript
 function sum(...numbers: number[]): number {
@@ -84,20 +84,16 @@ console.log(sum(1, 2, 3)); // Kết quả: 6
 console.log(sum(4, 5, 6, 7)); // Kết quả: 22
 ```
 
-### 1.4.4 Tham số rest (Rest Parameter)
+### 1.4.4 Spread (Spread Operator)
 
-Tham số rest cho phép hàm chấp nhận một số lượng không xác định các tham số dưới dạng một mảng.
+Dùng để tách mảng / object thành các phần tử riêng lẻ
 
 ```typescript
-function printItems(prefix: string, ...items: string[]): void {
-  items.forEach((item) => console.log(`${prefix}: ${item}`));
-}
+const arr1: number[] = [1, 2, 3];
+const arr2: number[] = [4, 5];
 
-printItems("Item", "Apple", "Banana", "Orange");
-// Kết quả:
-// Item: Apple
-// Item: Banana
-// Item: Orange
+const arr3 = [...arr1, ...arr2];
+console.log(arr3); // [1, 2, 3, 4, 5]
 ```
 
 ## 1.5 Hàm và Void (Function & Void)
