@@ -3,6 +3,7 @@
 Hướng dẫn này bao gồm các khái niệm chính về hàm trong TypeScript, bao gồm hàm mũi tên (arrow function), kiểu trả về, kiểu hàm, tham số, và cấu hình trình biên dịch TypeScript.
 
 ## 1.2 Hàm trả về giá trị (Function Return)
+
 Hàm trong TypeScript có thể khai báo kiểu trả về rõ ràng bằng cách sử dụng dấu hai chấm (`:`) theo sau là kiểu dữ liệu sau danh sách tham số. Điều này đảm bảo an toàn kiểu cho giá trị trả về.
 
 ```typescript
@@ -16,6 +17,7 @@ const multiply = (a: number, b: number): number => a * b;
 Nếu hàm không trả về giá trị, nó ngầm định trả về `undefined` trừ khi được chỉ định khác (ví dụ: `void`).
 
 ## 1.3 Hàm như kiểu dữ liệu (Function as Types)
+
 Bạn có thể định nghĩa kiểu của hàm bằng cách sử dụng type alias hoặc interface, chỉ định kiểu tham số và kiểu trả về. Điều này hữu ích cho các hàm callback hoặc chữ ký hàm.
 
 ```typescript
@@ -31,6 +33,7 @@ const log: Logger = (msg) => console.log(msg);
 ```
 
 ## 1.4 Hàm với tham số (Function with Parameters)
+
 TypeScript cho phép bạn định nghĩa kiểu tham số một cách rõ ràng để đảm bảo an toàn kiểu.
 
 ```typescript
@@ -40,6 +43,7 @@ function greet(name: string, greeting: string): string {
 ```
 
 ### 1.4.1 Tham số mặc định (Default Parameter)
+
 Tham số mặc định cho phép gán giá trị mặc định nếu tham số không được cung cấp.
 
 ```typescript
@@ -52,6 +56,7 @@ console.log(greetUser("Jane", "Hi")); // Kết quả: Hi, Jane!
 ```
 
 ### 1.4.2 Tham số tùy chọn (Optional Parameter)
+
 Tham số tùy chọn được đánh dấu bằng dấu `?` và có thể bị bỏ qua khi gọi hàm.
 
 ```typescript
@@ -67,6 +72,7 @@ console.log(describePerson("Jane", 25)); // Kết quả: Jane is 25 years old.
 ```
 
 ### 1.4.3 Toán tử spread (Spread Operators)
+
 Toán tử spread (`...`) cho phép truyền một mảng các giá trị vào hàm như các tham số riêng lẻ.
 
 ```typescript
@@ -79,11 +85,12 @@ console.log(sum(4, 5, 6, 7)); // Kết quả: 22
 ```
 
 ### 1.4.4 Tham số rest (Rest Parameter)
+
 Tham số rest cho phép hàm chấp nhận một số lượng không xác định các tham số dưới dạng một mảng.
 
 ```typescript
 function printItems(prefix: string, ...items: string[]): void {
-  items.forEach(item => console.log(`${prefix}: ${item}`));
+  items.forEach((item) => console.log(`${prefix}: ${item}`));
 }
 
 printItems("Item", "Apple", "Banana", "Orange");
@@ -94,6 +101,7 @@ printItems("Item", "Apple", "Banana", "Orange");
 ```
 
 ## 1.5 Hàm và Void (Function & Void)
+
 Kiểu `void` được sử dụng cho các hàm không trả về giá trị hoặc trả về `undefined`.
 
 ```typescript
@@ -103,6 +111,7 @@ function logMessage(message: string): void {
 ```
 
 ## 1.6 Never và Void (Never & Void)
+
 Kiểu `never` biểu thị một hàm không bao giờ hoàn thành (ví dụ: ném lỗi hoặc chạy vòng lặp vô hạn). `Void` khác với `never` vì `void` cho phép trả về `undefined`.
 
 ```typescript
@@ -115,79 +124,104 @@ function infiniteLoop(): never {
 }
 ```
 
-## 2.1 Chế độ theo dõi (Watch Mode)
-TypeScript hỗ trợ chế độ theo dõi (`--watch` hoặc `-w`) để tự động biên dịch lại khi có thay đổi trong mã nguồn.
+## Thực hành Lab 3:
 
-```bash
-tsc --watch
+## 1: Hàm tính điểm trung bình (Return type + Arrow Function)
+
+### Yêu cầu
+
+- Viết hàm `averageScore`
+- Nhận vào **nhiều điểm số** (`number`)
+- Trả về **điểm trung bình** (`number`)
+- Sử dụng **arrow function** và **rest parameter**
+
+### Ví dụ
+
+````ts
+averageScore(8, 9, 10); // 9
+averageScore(5, 6, 7, 8); // 6.5
+### Gợi ý
+```ts
+(...scores: number[]) => number
+````
+
+---
+
+### 2: Định nghĩa kiểu hàm kiểm tra số chẵn lẻ (Function as Type)
+
+### Yêu cầu
+
+- Định nghĩa kiểu cho hàm kiểm tra số
+- Hàm nhận vào **1 số** (`number`)
+- Trả về `"even"` hoặc `"odd"`
+
+### Ví dụ
+
+```ts
+checkNumber(4); // "even"
+checkNumber(7); // "odd"
 ```
 
-Lệnh này sẽ theo dõi các tệp TypeScript và biên dịch lại khi chúng thay đổi.
+### Gợi ý
 
-## 2.2 Biên dịch toàn bộ dự án với nhiều tệp (Compiling the Entire Project with Multiple Files)
-Để biên dịch nhiều tệp TypeScript, bạn có thể chỉ định từng tệp hoặc sử dụng tệp cấu hình `tsconfig.json`.
-
-```bash
-tsc file1.ts file2.ts
+```ts
+type CheckNumber = (n: number) => string;
 ```
 
-Tuy nhiên, sử dụng `tsconfig.json` là cách phổ biến để quản lý các dự án lớn với nhiều tệp.
+---
 
-## 2.3 Tệp tsconfig.json
-Tệp `tsconfig.json` chứa các cấu hình cho trình biên dịch TypeScript. Nó giúp xác định cách TypeScript biên dịch mã nguồn.
+### 3: Hàm tạo thông tin người dùng (Default + Optional Parameter)
 
-### 2.3.1 Bao gồm và loại trừ tệp (Including & Excluding Files)
-Bạn có thể chỉ định các tệp hoặc thư mục để bao gồm hoặc loại trừ trong quá trình biên dịch.
+### Yêu cầu
 
-```json
-{
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
-}
+- Viết hàm `createUser`
+- Tham số:
+  - `name`: `string` (bắt buộc)
+  - `age`: `number` (tùy chọn)
+  - `role`: `string` (mặc định `"user"`)
+- Trả về chuỗi mô tả người dùng
+
+### Ví dụ
+
+```ts
+createUser("Hòa");
+// "Name: Hòa, Role: user"
+
+createUser("Nam", 25, "admin");
+// "Name: Nam, Age: 25, Role: admin"
 ```
 
-- `include`: Chỉ định các tệp hoặc thư mục cần biên dịch.
-- `exclude`: Loại trừ các tệp hoặc thư mục không muốn biên dịch.
+---
 
-### 2.3.2 Target và Lib (Target & Lib)
-- `target`: Xác định phiên bản JavaScript đầu ra (ví dụ: `ES5`, `ES6`, `ESNext`).
-- `lib`: Chỉ định các thư viện TypeScript sử dụng (ví dụ: `DOM`, `ES6`).
+### 4: Hàm xử lý danh sách sản phẩm (Spread + Rest)
 
-```json
-{
-  "compilerOptions": {
-    "target": "ES6",
-    "lib": ["DOM", "ES6"]
-  }
-}
+### Yêu cầu
+
+- Viết hàm `mergeProducts`
+- Nhận vào **2 mảng sản phẩm**
+- Trả về **mảng mới đã gộp**
+- Viết thêm hàm `printProducts` để in danh sách ra console
+
+### Ví dụ
+
+```ts
+const a = ["iPhone", "Samsung"];
+const b = ["Xiaomi", "Oppo"];
+
+mergeProducts(a, b);
+// ["iPhone", "Samsung", "Xiaomi", "Oppo"]
 ```
 
-### 2.3.3 Cấu hình bổ sung và Source Map (More Configuration & Source Map)
-Source map giúp ánh xạ mã JavaScript đã biên dịch về mã TypeScript gốc, hữu ích cho việc gỡ lỗi.
+### Gợi ý
 
-```json
-{
-  "compilerOptions": {
-    "sourceMap": true,
-    "strict": true,
-    "noImplicitAny": true
-  }
-}
+- Dùng **spread**
+
+```ts
+[...arr1, ...arr2];
 ```
 
-- `sourceMap`: Tạo tệp `.map` để gỡ lỗi.
-- `strict`: Kích hoạt các kiểm tra nghiêm ngặt.
-- `noImplicitAny`: Báo lỗi nếu tham số hoặc biến không có kiểu rõ ràng.
+- Dùng **rest**
 
-### 2.3.4 rootDir và outDir
-- `rootDir`: Thư mục gốc chứa các tệp TypeScript.
-- `outDir`: Thư mục đầu ra cho các tệp JavaScript đã biên dịch.
-
-```json
-{
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist"
-  }
-}
+```ts
+(...products: string[])
 ```
