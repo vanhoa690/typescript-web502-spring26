@@ -70,3 +70,27 @@ type TBlog = {
   title: string;
   description: Description;
 };
+
+// 3.3 Type kết hợp Object
+
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type UserResponse = User & {
+  token: string;
+};
+
+const userResponse: UserResponse = {
+  id: 1,
+  name: "hoadv",
+  email: "email@gmail.com",
+  token: "token",
+};
+
+// extend interface
+interface IUser extends User {
+  token: string;
+}
