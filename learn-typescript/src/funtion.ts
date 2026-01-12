@@ -33,14 +33,24 @@ function describePerson(name: string, age?: number): string {
   return `${name} has no age specified.`;
 }
 
-// 5. Toán tử spread (Spread Operators)
+// 5. Toán tử rest (rest parameter)
 function sum(...numbers: number[]): number {
   return numbers.reduce((total, num) => total + num, 0);
 }
 sum(1, 2);
 sum(1, 2, 3, 4, 5);
 
-// 6. Rest Parameter
-function multiply(factor: number, ...numbers: number[]): number[] {
-  return numbers.map((num) => num * factor);
-}
+// 6. Spread operator
+
+const arr1: number[] = [1, 2, 3];
+const arr2: number[] = [4, 5];
+
+const combinedArray: number[] = [...arr1, ...arr2];
+
+console.log(combinedArray);
+
+const arr3: string[] = ["a", "b", "c"];
+const arr4: number[] = [1, 2, 3];
+
+const result: (string | number)[] = [...arr3, ...arr4];
+console.log(result);

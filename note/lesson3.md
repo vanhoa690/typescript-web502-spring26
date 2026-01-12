@@ -133,13 +133,16 @@ function infiniteLoop(): never {
 
 ### Ví dụ
 
-````ts
+```ts
 averageScore(8, 9, 10); // 9
 averageScore(5, 6, 7, 8); // 6.5
+```
+
 ### Gợi ý
+
 ```ts
-(...scores: number[]) => number
-````
+(...scores: number[]) => number;
+```
 
 ---
 
