@@ -166,5 +166,5 @@ src/
 | Lọc                | 2           |
 | Phân trang         | 2           |
 | TypeScript         | 1           |
-| UI & Clean code    | 1           |
+| BE NodeJS WEB503   | 1           |
 | **Tổng**           | **10 điểm** |
