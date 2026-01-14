@@ -52,3 +52,34 @@ console.log(Status2.Pending); //  0
 
 // 5 Literal Types
 type Direction = "up" | "down" | "left" | "right";
+
+// 6. Generic Type (T): object, funtion, array, class
+function identity<T>(value: T): T {
+  return value;
+}
+
+identity<number>(2);
+identity("hello");
+identity(true);
+identity<{ name: string }>({ name: "hoadv" });
+
+type ApiResponse<T> = {
+  code: number;
+  message: string;
+  data: T;
+};
+
+// res product, category, user, order
+const res1: ApiResponse<{ id: number; name: string }> = {
+  code: 200,
+  message: "ok",
+  data: { id: 1, name: "hoadv" },
+};
+
+type Category = { id: number; title: string };
+
+const res2: ApiResponse<Category> = {
+  code: 200,
+  message: "ok",
+  data: { id: 1, title: "hoadv" },
+};
