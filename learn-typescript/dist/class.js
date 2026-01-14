@@ -29,3 +29,10 @@ const product2 = {
     name: "Samsung S23",
     price: 1800,
 };
+const status = "success";
+const userResponse = {
+    id: 1,
+    name: "hoadv",
+    email: "email@gmail.com",
+    token: "token",
+};
