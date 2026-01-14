@@ -17,7 +17,7 @@ const e1: Employee = {
   age: 36,
 };
 
-// union | dung type of
+// 2. union | dung typeof de kiem tra kieu du lieu
 function printValue(value: string | number) {
   if (typeof value === "string") {
     console.log(value.toUpperCase());
@@ -28,3 +28,27 @@ function printValue(value: string | number) {
 
 printValue("hello");
 printValue(3.14159);
+
+// 3 Type Casting  (as)
+const value: unknown = "hello world";
+(value as string).toUpperCase(); // error
+
+// 4 Enum
+
+enum Status {
+  Pending = "PENDING",
+  Success = "SUCCESS",
+  Error = "ERROR",
+}
+
+enum Status2 {
+  Pending, // 0
+  Success, // 1
+  Error, // 2
+}
+
+console.log(Status.Pending); //  "PENDING
+console.log(Status2.Pending); //  0
+
+// 5 Literal Types
+type Direction = "up" | "down" | "left" | "right";
